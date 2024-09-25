@@ -5,15 +5,16 @@ import Planete from './Planete.ts';
 
 
 let planete = new Planete();
-let human1 = new Human("Arthut","H",false);
-let human2 = new Human("Guillaume","H",true);
-let human3 = new Human("Melodie","F",true);
-let couple1 = new Couple(human1,human2);
-let humans = [human1,human2,human3];
 
-planete.addYear(humans);
-planete.addYear(humans);
-
-console.log(human1.getAge());
+let human1 = new Human("Guillaume","H",true,planete);
+let human2 = new Human("Melodie","F",true,planete);
 
 
+
+
+for (let i = 0; i < 100; i++) {
+    planete.addYear();
+}
+
+console.log("There is " + planete.humans.length + " humans on the planet in " + planete.getYear() + " years");
+console.log(planete.humans);

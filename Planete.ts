@@ -1,12 +1,46 @@
-import Human from './Human';
+import Human from './Human.ts';
+import Couple from './Couple.ts';
 
 export default class Planete {
-    private year : 0;
+    private year : number = 200; 
+    public humans : Human[] = [];
+    public couples : Couple[] = [];
 
-    addYear(humans : Human[]) {
+    addYear() {
         this.year++;
-        humans.forEach(human => {
+        for (let human of this.humans) {
             human.addAge();
-        });
+        }
+
+        let noCouple : Human[] = [];
+        for (let human of this.humans) {
+            if (human.getInCouple() == false) {
+                noCouple.push(human);
+            }
+        }
+
+        if ((noCouple.length % 2) != 0) {
+            noCouple.pop();
+        }
+
+        for (let i = 0; i < noCouple.length; i+=2) {
+            new Couple(noCouple[i],noCouple[i+1],this);
+        }
+
+        for (let couple of this.couples) {
+            couple.makeChild(couple,this);
+        }
+    }
+
+    getYear() {
+        return this.year;
+    }
+
+    addHuman(human : Human) {
+        this.humans.push(human);
+    }
+
+    addCouple(couple : Couple) {
+        this.couples.push(couple);
     }
 }
