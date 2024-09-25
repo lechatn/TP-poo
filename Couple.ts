@@ -15,7 +15,7 @@ export default class Couple {
     }
 
     makeChild(couple : Couple, planete : Planete) {
-        if (couple.human1.getSexe() != couple.human2.getSexe() && couple.human1.getFertility() && couple.human2.getFertility()) {
+        if (couple.human1.getSexe() != couple.human2.getSexe() && couple.human1.getFertility() && couple.human2.getFertility() && couple.human1.getInCouple() && couple.human2.getInCouple() && this.human1.getAge() > 18 && this.human2.getAge() > 18 && this.human1.getAge() < 50 && this.human2.getAge() < 50) {
             let chance = Math.floor(Math.random() * 2);
             if (chance == 0) {
                 console.log("The child can't be born");

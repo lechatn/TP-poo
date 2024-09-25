@@ -1,20 +1,19 @@
-//import Platform from './Planete.ts';
 import Human from './Human.ts';
-import Couple from './Couple.ts';
 import Planete from './Planete.ts';
-
+import Population from './Population.ts';
 
 let planete = new Planete();
 
-let human1 = new Human("Guillaume","H",true,planete);
-let human2 = new Human("Melodie","F",true,planete);
+new Human("Guillaume","H",true,planete);
+new Human("Melodie","F",true,planete);
+
+let population = new Population(planete.humans.length);
 
 
 
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 300; i++) {
     planete.addYear();
+    console.log("This year, we have a reproduction rate of " + population.getReproductionRate() + " . The population is now " + population.getPopulation() + " and we have " + population.getDeaths() + " deaths");
 }
 
-console.log("There is " + planete.humans.length + " humans on the planet in " + planete.getYear() + " years");
-console.log(planete.humans);

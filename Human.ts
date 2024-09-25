@@ -44,4 +44,16 @@ export default class Human {
     return this.name;
   }
 
+  public CanDie(human : Human) {
+    if (human.getAge() < 35) {
+      return false;
+    }
+    let chance = Math.floor(Math.random() * (100-human.getAge()));
+    if (chance == 0) {
+      console.log(human.getName() + " is dead");
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

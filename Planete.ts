@@ -1,10 +1,12 @@
 import Human from './Human.ts';
 import Couple from './Couple.ts';
+import Population from './Population.ts';
 
 export default class Planete {
     private year : number = 200; 
     public humans : Human[] = [];
     public couples : Couple[] = [];
+
 
     addYear() {
         this.year++;
@@ -30,6 +32,15 @@ export default class Planete {
         for (let couple of this.couples) {
             couple.makeChild(couple,this);
         }
+        
+        for (let human of this.humans) {
+            let isDead = human.CanDie(human);
+            if (isDead) {
+                let index = this.humans.indexOf(human);
+                this.humans.splice(index,1);
+            }
+        }
+
     }
 
     getYear() {
